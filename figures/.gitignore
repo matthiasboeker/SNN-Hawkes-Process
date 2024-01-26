@@ -3,3 +3,5 @@
 
 # But not these files...
 !.gitignore
+!example_spiking_trains.png
+!example_alpha_matrix.png
