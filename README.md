@@ -37,3 +37,10 @@ Run `fit_hawkes_process.py` fits the Hawkes processes to the spike trains of the
 
 ### Plot the alpha parameters
 The `plot_alpha_heatmaps.py` visualises the interaction between neurons of the SNN, by plotting the alpha parameters of the Hawkes model.
+
+
+## Example Spike Trains of SNN
+![alt text](figures/example_spiking_trains.png)
+
+## Example interaction matrix visualisation
+[alt text](figures/example_alpha_matrix.png)
