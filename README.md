@@ -1,13 +1,14 @@
 # SNN-Hawkes-Process
 
 ## Overview
-This repository contains Python scripts for implementing and analyzing a Spiking Neural Network (SNN) integrated with a Hawkes Process model. The primary focus is on predicting spike trains, analyzing neural interactions, and optimizing neural network parameters.
+This repository contains implementation of Spiking Neural Network (SNN) with leaky integrate-and-fire (LIF) neurons. The SNN is optimised using an evolutionary algorithm. The connectivity of the SNN is modelled with Hawkes processes. The Hawkes processes are fitted using MCMC. The primary focus is train SNN and analyzing its neural interactions. The repo provides a toy example of classifying between a sine and cosine function. The spike trains of the SNN are stored and Hawkes processes model the interactions between those. As results we get a neural interaction matrix alpha as heatmap. 
 
 ## Contents
-1. `modelling_with_hawkles.py` - Contains the `HawkesProcessModel__` class used for modelling the Hawkes process in a neural network.
-2. `main.py` - The main script that loads spike train data, initializes the Hawkes process model, computes log-likelihoods, and saves parameter matrices. It also generates heatmaps of alpha parameters for correct and wrong predictions.
-3. `neural_network_training.py` - Implements a neural network using leaky integrate-and-fire (LIF) neurons and optimizes it using an evolutionary algorithm (CMA-ES).
-4. `hawkes_process_models.py` - Defines several variations of the Hawkes Process model (`HawkesProcessModel`, `HawkesProcessModel_`, `HawkesProcessModelSGD`, `HawkesProcessModel__`) for different analytical and optimization approaches.
+1. `hawkes_model.py` - Contains the `HawkesProcessModel` class used for modelling the Hawkes process in a neural network.
+2. `spiking_network.py` - Contains a neural network using leaky integrate-and-fire (LIF) neurons.
+3. `train_snn.py` - Trains the SNN based on an evolutionary algorithm (CMA-ES) and generates spike trains. 
+4. `fit_hawkes_process.py` Fits Hawkes processes to the spike trains and derives the alpha interactions matrix between the neurons. 
+5. `plot_alpha_heatmaps.py` Plots the interactions matrix as heatmap to visualise the relationships among neurons.
 
 ## Installation
 To run these scripts, you need to have Python installed along with the following libraries:
@@ -26,13 +27,13 @@ pip install numpy torch matplotlib seaborn cma sklearn
 ## Usage
 
 ### Modelling with Hawkes Process
-To use the Hawkes process model, import the `HawkesProcessModel__` class from `modelling_with_hawkles.py` and initialize it with the appropriate parameters.
-
-### Running the Main Script
-Execute `main.py` to process spike train data, perform model computations, and generate heatmaps. Ensure the data paths in the script are correctly set up.
+To use the Hawkes process model, import the `HawkesProcessModel` class from `hawkes_model.py` and initialize it with the appropriate parameters.
 
 ### Training the Neural Network
-Run `neural_network_training.py` to train the neural network using the evolutionary algorithm. This script also evaluates the network's performance and saves the results.
+Execute `train_snn.py` to train the SNN and evaluates the classification. The script stores the derived spike trains from the SNN. 
 
-### Exploring Hawkes Process Models
-The `hawkes_process_models.py` file contains different implementations of the Hawkes process model. Use these models as needed for your specific analysis.
+### Fitting Hawkes model
+Run `fit_hawkes_process.py` fits the Hawkes processes to the spike trains of the SNN. The script generates the alpha and beta parameters of the Hawkes model.
+
+### Plot the alpha parameters
+The `plot_alpha_heatmaps.py` visualises the interaction between neurons of the SNN, by plotting the alpha parameters of the Hawkes model.
