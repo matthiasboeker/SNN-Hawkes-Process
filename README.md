@@ -43,4 +43,4 @@ The `plot_alpha_heatmaps.py` visualises the interaction between neurons of the S
 ![alt text](figures/example_spiking_trains.png)
 
 ## Example interaction matrix visualisation
-[alt text](figures/example_alpha_matrix.png)
+![alt text](figures/example_alpha_matrix.png)
